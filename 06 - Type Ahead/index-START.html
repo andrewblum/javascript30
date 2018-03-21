@@ -16,22 +16,27 @@
   </form>
 <script>
   const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+  var data = [];
+  fetch(endpoint)
+    .then(d => d.json())
+    .then(raw => data = raw);
   const list = document.querySelectorAll('.suggestions');
-
   function updateResults(e) {
-    
-
-
-
+    let results = []
+    data.forEach(d => {
+        console.log(d);
+        if (d.city.includes(e.target.value)) {
+          results.push(d.city);
+        }
+    });
     list[0].innerHTML = '';
     results.forEach(each => {
-      let city = e.target.value;
+      let city = each;
       let li = document.createElement('li');
       li.appendChild(document.createTextNode(city));
       list[0].appendChild(li);
     });
   }
-
   const search = document.querySelectorAll('.search');
   search[0].addEventListener('input', updateResults)
 </script>
