@@ -16,29 +16,33 @@
   </form>
 <script>
   const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+
   var data = [];
   fetch(endpoint)
     .then(d => d.json())
     .then(raw => data = raw);
-  const list = document.querySelectorAll('.suggestions');
+  const list = document.querySelector('.suggestions');
+
   function updateResults(e) {
     let results = []
     data.forEach(d => {
-        console.log(d);
-        if (d.city.includes(e.target.value)) {
-          results.push(d.city);
+        const regex = new RegExp(e.target.value, 'gi');
+        const cityName = d.city.replace(regex, `<span class="hl">${e.target.value}</span>`);
+        const stateName = d.state.replace(regex, `<span class="hl">${e.target.value}</span>`);
+        if (d.city.includes(e.target.value) || d.state.includes(e.target.value)) {
+          results.push(
+            `<li>
+              <span class="name"> ${cityName}, ${stateName} </span>
+              <span class="population"> ${d.population} </span>
+            </li>`
+          );
         }
     });
-    list[0].innerHTML = '';
-    results.forEach(each => {
-      let city = each;
-      let li = document.createElement('li');
-      li.appendChild(document.createTextNode(city));
-      list[0].appendChild(li);
-    });
+    list.innerHTML = results.join('');
   }
-  const search = document.querySelectorAll('.search');
-  search[0].addEventListener('input', updateResults)
+
+  const search = document.querySelector('.search');
+  search.addEventListener('input', updateResults)
 </script>
   </body>
 </html>
