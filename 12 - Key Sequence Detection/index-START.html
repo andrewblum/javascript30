@@ -7,6 +7,12 @@
 </head>
 <body>
 <script>
+let pressed = [];
+let code = 'konami';
+window.addEventListener('keyup', e => {
+  pressed += [e.key];
+  console.log('!!!') if (pressed.join('').includes(code))
+})
 </script>
 </body>
 </html>
