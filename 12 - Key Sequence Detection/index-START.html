@@ -7,11 +7,15 @@
 </head>
 <body>
 <script>
-let pressed = [];
-let code = 'konami';
+var pressed = [];
+const code = 'konami';
 window.addEventListener('keyup', e => {
-  pressed += [e.key];
-  console.log('!!!') if (pressed.join('').includes(code))
+  pressed.push(e.key);
+  console.log(pressed);
+  pressed.splice()
+  if (pressed.join('').includes(code)) {
+    console.log('!!!')
+  }
 })
 </script>
 </body>
