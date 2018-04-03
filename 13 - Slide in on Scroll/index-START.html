@@ -62,8 +62,8 @@
 
   function f() {
     images.forEach(img => {
-      const halfShown = (window.scrollY + window.innerHeight) - (img.height / 2) > img.offsetTop;
-      const visible = window.scrollY < (img.offsetTOP + img.height);
+      const halfShown = ((window.scrollY + window.innerHeight) - (img.height / 2)) > img.offsetTop;
+      const visible = window.scrollY < (img.offsetTop + img.height);
       if (halfShown && visible) {
         img.classList.add('active');
       } else {
