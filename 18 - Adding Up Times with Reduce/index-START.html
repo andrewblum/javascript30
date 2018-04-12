@@ -182,6 +182,18 @@
     </li>
   </ul>
 <script>
+  const times = [...document.querySelectorAll('[data-time]')];
+  let total = 0;
+  times.forEach(e => {
+    let t = e.dataset.time.split(':');
+    total += parseInt(t[0] * 60);
+    total += parseInt(t[1]);
+  })
+  const hours = Math.floor(total / 3600);
+  total = total % 3600
+  const mins = Math.floor(total / 60);
+  total = total % 60
+  console.log(hours, mins, total);
 </script>
 </body>
 </html>
