@@ -27,18 +27,17 @@
 
   <script>
     // 👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀
-    var last = '';
-    const body = document.querySelector('body');
-    body.addEventListener('mouseover', e => {
-      if (e.target.nodeName === 'A') {
-        if (last.target) {
-          last.target.style.backgroundColor = "#000000";
-          console.log('js');
-        }
-        last = e.target;
-        e.target.style.backgroundColor = "#eee";
-      }
-    })
+    const trig = document.querySelectorAll('a');
+    const highlight = document.createElement('span');
+    highlight.classList.add('highlight');
+    document.body.append(highlight);
+
+    function highlightLink() {
+      
+    }
+
+    trig.forEach(a => a.addEventListener('mouseneter', highlightLink));
+
   </script>
 </body>
 </html>
