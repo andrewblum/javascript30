@@ -27,7 +27,18 @@
 
   <script>
     // 👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀
+    var last = '';
+    const body = document.querySelector('body');
+    body.addEventListener('mouseover', e => {
+      if (e.target.nodeName === 'A') {
+        if (last.target) {
+          last.target.style.backgroundColor = "#000000";
+          console.log('js');
+        }
+        last = e.target;
+        e.target.style.backgroundColor = "#eee";
+      }
+    })
   </script>
 </body>
 </html>
-
