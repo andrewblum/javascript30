@@ -33,8 +33,10 @@
     document.body.append(highlight);
 
     function highlightLink() {
-      
+      const linkCoords = this.getBoundingClientRect();
+      console.log(linkCoords);
     }
+
 
     trig.forEach(a => a.addEventListener('mouseneter', highlightLink));
 
